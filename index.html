@@ -206,7 +206,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-03-31 17:20:22" itemprop="dateModified" datetime="2026-03-31T17:20:22+08:00">2026-03-31</time>
+      <time title="Modified: 2026-03-31 17:23:07" itemprop="dateModified" datetime="2026-03-31T17:23:07+08:00">2026-03-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -228,122 +228,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-<h1 id="摘要写作"><a href="#摘要写作" class="headerlink" title="摘要写作"></a>摘要写作</h1><p>\begin{abstract}<br>Automatic segmentation of porcine CT images is essential for breeding and body composition analysis, yet limited by the scarcity of high-quality pixel-level annotations. This study introduces a self-supervised learning approach leveraging medical priors from human anatomy to enable precise and robust segmentation of productive traits in porcine CT imaging, significantly reducing the dependence on large-scale manual annotations. Our two-stage pipeline involves self-supervised pre-training with the \textbf{DEEPTILING} framework on unlabeled CT images, followed by fine-tuning on limited labeled data using a transformer-based architecture. Our method, when trained on 100% of the labeled data, reaches 96.07% accuracy, marking a significant improvement of 13.30 percentage points over the baseline of 82.77%. Furthermore, with just half the data , it achieves 93.76% accuracy, a result that alone exceeds the baseline’s peak performance. The proposed approach demonstrates state-of-the-art performance in porcine segmentation tasks, offering a cost-effective solution for precision livestock farming applications.翻译中文然后给出以下修改意见假设你是一个专业审稿人</p>
-<p>下面我按SCI 审稿流程的真实标准来处理：<br>1）先给出准确中文翻译（不是直译，而是符合论文语境的学术表达）<br>2）再以专业审稿人（Reviewer）视角提出可操作的修改意见，重点针对你当前正在写的猪 CT 性状分割 + 自监督预训练这类论文常见问题。</p>
-<p>一、Abstract 中文翻译（学术风格）</p>
-<p>摘要（Abstract）</p>
-<p>猪只 CT 图像的自动分割对于育种和体组成分析具有重要意义，但其发展受到高质量像素级标注数据稀缺的限制。本研究提出了一种利用人类解剖学医学先验的自监督学习方法，用于实现猪 CT 图像中生产性状的精确且稳健分割，从而显著降低对大规模人工标注数据的依赖。</p>
-<p>本文提出的两阶段方法首先在无标注 CT 图像上采用 DEEPTILING 框架进行自监督预训练，随后在有限标注数据上使用基于 Transformer 的架构进行微调。实验结果表明，当使用 100% 标注数据进行训练时，所提出方法的准确率达到 96.07%，相比基线方法 82.77% 提高了 13.30 个百分点。此外，在仅使用一半训练数据的情况下，该方法仍可达到 93.76% 的准确率，单独这一结果已超过基线模型的最佳性能。</p>
-<p>所提出方法在猪 CT 分割任务中展现出**先进水平（state-of-the-art）**的性能，为精准畜牧业应用提供了一种具有成本效益的解决方案。</p>
-<p>二、如果我是审稿人，会重点指出的 8 个问题（非常真实）</p>
-<p>这些不是语言问题，而是审稿人真正会卡你的地方。</p>
-<p>1）”medical priors from human anatomy” —— 逻辑风险较高（需要澄清）</p>
-<p>原文：</p>
-<p>leveraging medical priors from human anatomy</p>
-<p>审稿人会立即问：</p>
-<p>问题：</p>
-<p>Why are human anatomical priors applicable to porcine anatomy?</p>
-<p>尤其在你这个领域（动物科学 &#x2F; livestock imaging），这是一个潜在争议点。</p>
-<p>建议修改（更安全）</p>
-<p>如果你的意思是：</p>
-<p>使用 human CT pretraining<br>或 human anatomical structure similarity<br>或 generic medical features</p>
-<p>建议改成：</p>
-<p>leveraging anatomical priors derived from large-scale medical imaging data</p>
-<p>或更直接：</p>
-<p>leveraging transferable anatomical priors from human CT datasets</p>
-<p>这样更科学，也更容易过审。</p>
-<p>2）”productive traits segmentation” —— 术语不够精确</p>
-<p>你这里写：</p>
-<p>segmentation of productive traits</p>
-<p>但在技术上：</p>
-<p>模型分割的是组织 &#x2F; 器官，而不是 trait</p>
-<p>例如：</p>
-<p>muscle<br>fat<br>bone</p>
-<p>而：</p>
-<p>lean meat percentage<br>backfat thickness</p>
-<p>是 derived traits（计算得到的）</p>
-<p>建议改成（更标准）<br>segmentation of anatomical structures for productive trait estimation</p>
-<p>或：</p>
-<p>segmentation of body composition components</p>
-<p>这会更符合 precision livestock &#x2F; carcass analysis 领域规范。</p>
-<p>3）Accuracy 作为主指标 —— 审稿人可能不接受</p>
-<p>你写：</p>
-<p>reaches 96.07% accuracy</p>
-<p>但在 segmentation 领域：</p>
-<p>主指标通常是：</p>
-<p>Dice<br>IoU<br>HD95</p>
-<p>而不是：</p>
-<p>Accuracy</p>
-<p>这是一个典型 reviewer comment</p>
-<p>Accuracy is not a standard metric for medical image segmentation. Please report Dice similarity coefficient.</p>
-<p>建议</p>
-<p>把：</p>
-<p>accuracy</p>
-<p>改成：</p>
-<p>Dice score</p>
-<p>或：</p>
-<p>mean Dice coefficient</p>
-<p>如果确实是 pixel accuracy，需要写清楚：</p>
-<p>pixel-wise accuracy<br>4）”state-of-the-art” —— 高风险用词（必须有证据）</p>
-<p>你写：</p>
-<p>demonstrates state-of-the-art performance</p>
-<p>这是审稿人最敏感词之一。</p>
-<p>如果没有：</p>
-<p>多个 baseline<br>多个数据集<br>显著统计优势</p>
-<p>就会被要求删除。</p>
-<p>建议更安全表达</p>
-<p>改成：</p>
-<p>demonstrates competitive performance</p>
-<p>或：</p>
-<p>achieves superior performance compared with baseline methods</p>
-<p>这是标准审稿安全写法。</p>
-<p>5）”two-stage pipeline” —— 需要更具体</p>
-<p>你写：</p>
-<p>Our two-stage pipeline involves</p>
-<p>但 abstract 里没有明确：</p>
-<p>stage 1 objective<br>stage 2 model<br>审稿人会问</p>
-<p>What specific self-supervised task is used?</p>
-<p>例如：</p>
-<p>jigsaw<br>rotation<br>reconstruction<br>contrastive learning<br>建议补充一行（非常重要）</p>
-<p>例如：</p>
-<p>self-supervised pre-training using a puzzle-based representation learning strategy</p>
-<p>或：</p>
-<p>using a tiling-based self-supervised learning framework<br>6）数据规模没有说明 —— 这是 major issue</p>
-<p>Abstract 没有写：</p>
-<p>number of pigs<br>number of scans<br>number of organs</p>
-<p>这是 segmentation 论文最基本信息。</p>
-<p>审稿人会直接写</p>
-<p>The dataset size is not specified.</p>
-<p>建议加入一句</p>
-<p>例如：</p>
-<p>The method was evaluated on a dataset of XXX porcine CT scans with annotations for XXX anatomical structures.<br>7）”reducing dependence on large-scale annotations” —— 需要证据</p>
-<p>你声称：</p>
-<p>significantly reducing the dependence</p>
-<p>但 abstract 里只有：</p>
-<p>half data<br>审稿人会要求</p>
-<p>例如：</p>
-<p>10% data<br>20% data<br>few-shot<br>建议更强写法<br>maintaining high performance even with 50% or fewer labeled samples<br>8）DEEPTILING —— 必须解释（如果是你提出的方法）</p>
-<p>如果：</p>
-<p>DEEPTILING 是你的方法</p>
-<p>那么：</p>
-<p>必须说明：</p>
-<p>a novel self-supervised tiling framework (DEEPTILING)</p>
-<p>否则 reviewer 会认为：</p>
-<p>unclear whether DEEPTILING is proposed or adopted</p>
-<p>三、如果按 SCI 审稿标准，我会给这个 Abstract 的评分</p>
-<p>（真实评估）</p>
-<p>维度	评分	说明<br>Technical clarity	8 &#x2F; 10	逻辑清晰<br>Method novelty	8 &#x2F; 10	有 SSL + transformer<br>Terminology correctness	6 &#x2F; 10	accuracy &#x2F; productive traits<br>Reproducibility	6 &#x2F; 10	缺 dataset info<br>Reviewer risk	中等	可改进<br>四、我建议的“更安全版本”Abstract（审稿优化版）</p>
-<p>这是基于你原文的最小修改版本，不是重写。</p>
-<p>Automatic segmentation of porcine CT images is essential for breeding and body composition analysis, yet remains challenging due to the scarcity of high-quality pixel-level annotations. </p>
-<p>This study introduces a self-supervised learning approach that leverages transferable anatomical priors from large-scale medical imaging data to enable precise and robust segmentation of body composition components in porcine CT imaging, thereby reducing the dependence on large-scale manual annotations.</p>
-<p>Our two-stage pipeline consists of self-supervised pre-training using the DEEPTILING framework on unlabeled CT images, followed by supervised fine-tuning on limited labeled data using a transformer-based segmentation architecture.</p>
-<p>Experimental results show that, when trained on the full labeled dataset, the proposed method achieves a Dice score of 96.07%, representing an improvement of 13.30 percentage points over the baseline method (82.77%). </p>
-<p>Notably, when trained with only 50% of the labeled data, the model still achieves a Dice score of 93.76%, surpassing the baseline model trained on the full dataset.</p>
-<p>These results demonstrate the effectiveness of the proposed approach for label-efficient porcine CT segmentation and highlight its potential for practical deployment in precision livestock farming applications.</p>
-<p>如果你下一步要做的是这些，我也可以直接继续按审稿标准帮你：</p>
-<p>修改 Introduction<br>检查 Methods 术语<br>优化 Results &#x2F; Ablation Study<br>判断 是否符合 SCI 审稿逻辑</p>
-
+          <h1 id="摘要写作"><a href="#摘要写作" class="headerlink" title="摘要写作"></a>摘要写作</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/03/26/%E6%91%98%E8%A6%81%E9%83%A8%E5%88%86/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
